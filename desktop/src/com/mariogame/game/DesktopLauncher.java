@@ -16,6 +16,7 @@ public class DesktopLauncher {
 		Lwjgl3ApplicationConfiguration config = new Lwjgl3ApplicationConfiguration();
 		config.setForegroundFPS(60);
 		config.setTitle("Mario Game");
+		config.setWindowedMode(1200, 624);
 		return config;
 	}
 }
