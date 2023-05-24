@@ -116,6 +116,9 @@ public class FireBall extends Sprite {
             world.destroyBody(body);
             destroyed = true;
         }*/
+        
+        // It may also be beneficial to move the destroyBody call outside of the isAnimationFinished call
+        // Then add another boolean isAnimationFinished that will fire to stop the rendering of the animation
         if (stateTime > 1 && !destroyed) {
             body.setType(BodyDef.BodyType.StaticBody);
             setRegion(fireHitAnimation.getKeyFrame(stateTime));
