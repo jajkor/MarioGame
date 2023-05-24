@@ -116,7 +116,14 @@ public class FireBall extends Sprite {
             world.destroyBody(body);
             destroyed = true;
         }*/
-        if ((stateTime > 1 || setToDestroy) && !destroyed) {
+        if (stateTime > 1 && !destroyed) {
+            body.setType(BodyDef.BodyType.StaticBody);
+            setRegion(fireHitAnimation.getKeyFrame(stateTime));
+            if (fireHitAnimation.isAnimationFinished(stateTime)) {
+                world.destroyBody(body);
+                destroyed = true;
+            }
+        } else if (setToDestroy && !destroyed) { 
             body.setType(BodyDef.BodyType.StaticBody);
             setRegion(fireHitAnimation.getKeyFrame(stateTime));
             if (fireHitAnimation.isAnimationFinished(stateTime)) {
