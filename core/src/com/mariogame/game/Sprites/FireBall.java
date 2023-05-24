@@ -120,17 +120,13 @@ public class FireBall extends Sprite {
         // It may also be beneficial to move the destroyBody call outside of the isAnimationFinished call
         // Then add another boolean isAnimationFinished that will fire to stop the rendering of the animation
         if (stateTime > 1 && !destroyed) {
+            setToDestroy();
+        }
+        if (setToDestroy && !destroyed) { 
             body.setType(BodyDef.BodyType.StaticBody);
             setRegion(fireHitAnimation.getKeyFrame(stateTime));
+            world.destroyBody(body);
             if (fireHitAnimation.isAnimationFinished(stateTime)) {
-                world.destroyBody(body);
-                destroyed = true;
-            }
-        } else if (setToDestroy && !destroyed) { 
-            body.setType(BodyDef.BodyType.StaticBody);
-            setRegion(fireHitAnimation.getKeyFrame(stateTime));
-            if (fireHitAnimation.isAnimationFinished(stateTime)) {
-                world.destroyBody(body);
                 destroyed = true;
             }
         }
